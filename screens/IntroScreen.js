@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, AlertIOS } from 'react-native';
 import { Button } from 'react-native-elements';
-import firebase from 'firebase';
-import keys from '../keys.json';
+import firebase from '../plugins/firebase';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,9 +15,7 @@ export default class App extends React.Component {
 
   render() {
     var {navigate} = this.props.navigation;
-    const firebaseConfig = keys[0].firebaseConfig;
-    
-    firebase.initializeApp(firebaseConfig);
+  
     return (
       <View style={styles.container}>
         {/* <Text>By tapping Log In, you agree to our</Text> */}
@@ -26,7 +23,14 @@ export default class App extends React.Component {
         <Button
               onPress = {
                 () => logIn().then(function(userInfo){
-                      navigate("Welcome", userInfo)
+                  // var user = firebase.auth().currentUser;
+                  // console.log(user.uid);
+                  // firebase.database().ref('users/' + user.uid).set({
+                  //       firstName: "kobi",
+                  //       blablaName: "blablabla"
+                  //     }
+                  //   )
+                  navigate("Welcome", userInfo)
                 })
               }
               title="LOG IN WITH FACEBOOK"
@@ -46,7 +50,15 @@ async function logIn() {
   });
 
   if (type === 'success') {
-    firebase.auth().signInAndRetrieveDataWithCredential(firebase.auth.FacebookAuthProvider.credential(token)).then(function(result) {
+    firebase.auth().signInAndRetrieveDataWithCredential(firebase.auth.FacebookAuthProvider.credential(token)).then(function(authData) {
+        firebase.database().ref('users/' + authData.user.uid).set({
+            firstName: "kobi",
+            blablaName: "the king!"
+          }
+        ).catch((error) => {
+          console.log("error: " + error);
+        });
+        //console.log("result " + JSON.stringify(result));
         // const userInfo = { 
         //   name: result.additionalUserInfo.profile.first_name, 
         //   picture: result.additionalUserInfo.profile.picture.data.url,

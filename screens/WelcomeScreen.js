@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
+import firebase from '../plugins/firebase';
 
 export default class WelcomeScreen extends React.Component {
     static navigationOptions = {
@@ -10,7 +11,10 @@ export default class WelcomeScreen extends React.Component {
     render() {
         var {navigate} = this.props.navigation;
         var userInfo = this.props.navigation.state.params;
-        //console.log(userInfo);
+
+        var user = firebase.auth().currentUser;
+        console.log("firstName: " + user.firstName);
+
         return (
         <View style={styles.container}>
             <Avatar
