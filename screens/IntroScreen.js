@@ -46,14 +46,17 @@ export default class App extends React.Component {
 
 async function logIn() {
   const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('435042850302514', {
-      permissions: ['public_profile'],
+      permissions: ['public_profile'], behavior: 'web'
   });
 
   if (type === 'success') {
     firebase.auth().signInAndRetrieveDataWithCredential(firebase.auth.FacebookAuthProvider.credential(token)).then(function(authData) {
         firebase.database().ref('users/' + authData.user.uid).set({
-            firstName: "kobi",
-            blablaName: "the king!"
+          firstName: authData.additionalUserInfo.profile.first_name, 
+          picture: authData.additionalUserInfo.profile.picture.data.url,
+          email: authData.additionalUserInfo.profile.email,
+          gender: "male",
+          birthday: authData.additionalUserInfo.profile.birthday
           }
         ).catch((error) => {
           console.log("error: " + error);

@@ -12,8 +12,14 @@ export default class WelcomeScreen extends React.Component {
         var {navigate} = this.props.navigation;
         var userInfo = this.props.navigation.state.params;
 
-        var user = firebase.auth().currentUser;
-        console.log("firstName: " + user.firstName);
+        var userId = firebase.auth().currentUser.uid;
+        firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+          //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+          console.log("firstName: " + snapshot.val().firstName);
+        });
+        // firebase.database().ref('users/' + authData.user.uid).once()
+        // var user = firebase.auth().currentUser;
+        // console.log("firstName: " + user.firstName);
 
         return (
         <View style={styles.container}>
