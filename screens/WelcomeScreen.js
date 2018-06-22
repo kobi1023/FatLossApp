@@ -8,31 +8,52 @@ export default class WelcomeScreen extends React.Component {
         title: "",
         header: null
       };
+      constructor(props) {
+        super(props);
+        this.state = {
+          firstName: "",
+          picture: "https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-512.png",
+          email: "",
+          gender: "",
+          birthday: ""
+        };
+      }
+
+    componentDidMount() {
+      var userId = firebase.auth().currentUser.uid;
+      firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+        this.setState({firstName: snapshot.val().firstName});
+        this.setState({picture: snapshot.val().picture});
+        this.setState({email: snapshot.val().email});
+        this.setState({gender: snapshot.val().gender});
+        this.setState({birthday: snapshot.val().birthday});
+      });
+    }
+
     render() {
         var {navigate} = this.props.navigation;
-        var userInfo = this.props.navigation.state.params;
+        //var userInfo = this.props.navigation.state.params;
 
-        var userId = firebase.auth().currentUser.uid;
-        firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-          //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-          console.log("firstName: " + snapshot.val().firstName);
-        });
-        // firebase.database().ref('users/' + authData.user.uid).once()
-        // var user = firebase.auth().currentUser;
-        // console.log("firstName: " + user.firstName);
+        if (this.state.firstName === "") {
+          return (
+            <View style={styles.container}>
+              <Text>Loading...</Text>
+            </View>
+          ) 
+        }
 
         return (
         <View style={styles.container}>
             <Avatar
               size="xlarge"
               rounded
-              source={{uri: userInfo.picture}}
+              source={{uri: this.state.picture}}
               activeOpacity={0.7}
             />
-            <Text>Name: {userInfo.name}</Text>
-            <Text>Email: {userInfo.email}</Text>
-            <Text>Birthday: {userInfo.birthday}</Text>
-            <Text>Gender: {userInfo.gender}</Text>
+            <Text>Name: {this.state.firstName}</Text>
+            <Text>Email: {this.state.email}</Text>
+            <Text>Birthday: {this.state.birthday}</Text>
+            <Text>Gender: {this.state.gender}</Text>
             <Button
               onPress = {() => navigate("Measurements", {})}
               title="GO TO MEWASUREMENTS"

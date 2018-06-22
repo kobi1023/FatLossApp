@@ -22,7 +22,7 @@ export default class App extends React.Component {
         {/* <Text>Terms and Privacy Policy.</Text> */}
         <Button
               onPress = {
-                () => logIn().then(function(userInfo){
+                () => logIn().then(function(){
                   // var user = firebase.auth().currentUser;
                   // console.log(user.uid);
                   // firebase.database().ref('users/' + user.uid).set({
@@ -30,7 +30,7 @@ export default class App extends React.Component {
                   //       blablaName: "blablabla"
                   //     }
                   //   )
-                  navigate("Welcome", userInfo)
+                  navigate("Welcome", {})
                 })
               }
               title="LOG IN WITH FACEBOOK"
@@ -46,7 +46,7 @@ export default class App extends React.Component {
 
 async function logIn() {
   const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('435042850302514', {
-      permissions: ['public_profile'], behavior: 'web'
+      permissions: ['public_profile', 'user_gender'], behavior: 'web'
   });
 
   if (type === 'success') {
@@ -55,7 +55,7 @@ async function logIn() {
           firstName: authData.additionalUserInfo.profile.first_name, 
           picture: authData.additionalUserInfo.profile.picture.data.url,
           email: authData.additionalUserInfo.profile.email,
-          gender: "male",
+          gender: authData.additionalUserInfo.profile.gender,
           birthday: authData.additionalUserInfo.profile.birthday
           }
         ).catch((error) => {
@@ -71,19 +71,19 @@ async function logIn() {
         // };
     });
 
-    // Get the user's name using Facebook's Graph API
-    const response = await fetch(
-      `https://graph.facebook.com/me?access_token=${token}&fields=id,first_name,email,picture.type(large)`);
-      const facebookInfo = await response.json();
-      const userInfo = { 
-        name: facebookInfo.first_name, 
-        picture: facebookInfo.picture.data.url,
-        email: facebookInfo.email,
-        gender: "male",
-        birthday: "08/22/1975"
-      };
-      return userInfo;
-  }
+  //   // Get the user's name using Facebook's Graph API
+  //   const response = await fetch(
+  //     `https://graph.facebook.com/me?access_token=${token}&fields=id,first_name,email,picture.type(large)`);
+  //     const facebookInfo = await response.json();
+  //     const userInfo = { 
+  //       name: facebookInfo.first_name, 
+  //       picture: facebookInfo.picture.data.url,
+  //       email: facebookInfo.email,
+  //       gender: "male",
+  //       birthday: "08/22/1975"
+  //     };
+  //     return userInfo;
+   }
 }
 
 const styles = StyleSheet.create({
