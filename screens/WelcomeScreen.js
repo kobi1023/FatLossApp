@@ -10,50 +10,50 @@ export default class WelcomeScreen extends React.Component {
       };
       constructor(props) {
         super(props);
-        this.state = {
-          firstName: "",
-          picture: "https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-512.png",
-          email: "",
-          gender: "",
-          birthday: ""
-        };
+        // this.state = {
+        //   firstName: "",
+        //   picture: "https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-512.png",
+        //   email: "",
+        //   gender: "",
+        //   birthday: ""
+        // };
       }
 
-    componentDidMount() {
-      var userId = firebase.auth().currentUser.uid;
-      firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-        this.setState({firstName: snapshot.val().firstName});
-        this.setState({picture: snapshot.val().picture});
-        this.setState({email: snapshot.val().email});
-        this.setState({gender: snapshot.val().gender});
-        this.setState({birthday: snapshot.val().birthday});
-      });
-    }
+    // componentDidMount() {
+    //   var userId = firebase.auth().currentUser.uid;
+    //   firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+    //     this.setState({firstName: snapshot.val().firstName});
+    //     this.setState({picture: snapshot.val().picture});
+    //     this.setState({email: snapshot.val().email});
+    //     this.setState({gender: snapshot.val().gender});
+    //     this.setState({birthday: snapshot.val().birthday});
+    //   });
+    // }
 
     render() {
         var {navigate} = this.props.navigation;
         //var userInfo = this.props.navigation.state.params;
 
-        if (this.state.firstName === "") {
-          return (
-            <View style={styles.container}>
-              <Text>Loading...</Text>
-            </View>
-          ) 
-        }
+        // if (this.state.firstName === "") {
+        //   return (
+        //     <View style={styles.container}>
+        //       <Text>Loading...</Text>
+        //     </View>
+        //   ) 
+        // }
 
         return (
         <View style={styles.container}>
             <Avatar
               size="xlarge"
               rounded
-              source={{uri: this.state.picture}}
+              source={{uri: this.props.navigation.state.params.picture}}
               activeOpacity={0.7}
             />
-            <Text>Name: {this.state.firstName}</Text>
-            <Text>Email: {this.state.email}</Text>
-            <Text>Birthday: {this.state.birthday}</Text>
-            <Text>Gender: {this.state.gender}</Text>
+            <Text>Name: {this.props.navigation.state.params.firstName}</Text>
+            <Text>Email: {this.props.navigation.state.params.email}</Text>
+            <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
+            <Text>Gender: {this.props.navigation.state.params.gender}</Text>
             <Button
               onPress = {() => navigate("Measurements", {})}
               title="GO TO MEWASUREMENTS"
