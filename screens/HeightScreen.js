@@ -43,7 +43,7 @@ export default class HeightScreen extends React.Component {
     saveUserHeight(userHeight){
         const userId = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('users/' + userId).update({measurements: {height: userHeight}}
+        firebase.database().ref('users/' + userId + "/measurements/").update({height: userHeight}
         ).catch((error) => {
             console.log("error: " + error);
         });

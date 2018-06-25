@@ -43,7 +43,7 @@ export default class WeightScreen extends React.Component {
     saveUserWeight(userWeight){
         const userId = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('users/' + userId).update({measurements: {weight: userWeight}}
+        firebase.database().ref('users/' + userId + "/measurements/").update({weight: userWeight}
         ).catch((error) => {
             console.log("error: " + error);
         });
