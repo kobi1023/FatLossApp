@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Slider, Button } from 'react-native-elements';
+import firebase from '../plugins/firebase';
 
 export default class WaistCircumferenceScreen extends React.Component {
     constructor(props){
@@ -27,13 +28,25 @@ export default class WaistCircumferenceScreen extends React.Component {
                 onValueChange = {(value) => this.setState({waist: value})} 
             />
             <Button
-              onPress = {() => navigate("StatusAndGoals", {})}
+              onPress = {() => {
+                  this.saveUserWeight(this.state.waist); 
+                  navigate("StatusAndGoals", {})
+              }}
               title="GO TO STATUS & GOALS"
               titleStyle={{fontWeight: 'bold', fontSize: 18}}
               containerStyle={{marginVertical: 10, height: 40, width: 200}}
             />
         </View>
         );
+    }
+    
+    saveUserWaist(userWaist){
+        const userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref('users/' + userId + "/measurements/").update({WaistWC: userWaist}
+        ).catch((error) => {
+            console.log("error: " + error);
+        });
     }
 }
 
