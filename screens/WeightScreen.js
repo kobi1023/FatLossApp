@@ -17,7 +17,7 @@ export default class WeightScreen extends React.Component {
         var {navigate} = this.props.navigation;
         return (
         <View style={styles.container}>
-            <Text>Height: {this.state.weight}</Text>
+            <Text>Weight: {this.state.weight}</Text>
             <Slider
                 style = {{width: 300}}
                 value = {this.state.weight}

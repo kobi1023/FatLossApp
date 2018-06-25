@@ -55,8 +55,8 @@ export default class WelcomeScreen extends React.Component {
             <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
             <Text>Gender: {this.props.navigation.state.params.gender}</Text>
             <Button
-              onPress = {() => navigate("Measurements", {})}
-              title="GO TO MEWASUREMENTS"
+              onPress = {() => navigate("Height", {})}
+              title="GO TO HEIGHT"
               titleStyle={{fontWeight: 'bold', fontSize: 18}}
               //buttonStyle={{backgroundColor: "rgba(59,89,152,1)", borderWidth: 0, borderColor: 'transparent', borderRadius: 20}}
               containerStyle={{marginVertical: 10, height: 40, width: 200}}
