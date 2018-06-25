@@ -29,7 +29,7 @@ export default class WaistCircumferenceScreen extends React.Component {
             />
             <Button
               onPress = {() => {
-                  this.saveUserWeight(this.state.waist); 
+                  this.saveUserWaist(this.state.waist); 
                   navigate("StatusAndGoals", {})
               }}
               title="GO TO STATUS & GOALS"
