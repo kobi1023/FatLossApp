@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Slider, Button } from 'react-native-elements';
+import firebase from '../plugins/firebase';
 
 export default class WeightScreen extends React.Component {
     constructor(props){
@@ -27,13 +28,25 @@ export default class WeightScreen extends React.Component {
                 onValueChange = {(value) => this.setState({weight: value})} 
             />
             <Button
-              onPress = {() => navigate("WaistCircumference", {})}
+              onPress = {() => {
+                  this.saveUserWeight(this.state.weight); 
+                  navigate("WaistCircumference", {})
+              }}
               title="GO TO WAIST CIRCUMFERENCE"
               titleStyle={{fontWeight: 'bold', fontSize: 18}}
               containerStyle={{marginVertical: 10, height: 40, width: 200}}
             />
         </View>
         );
+    }
+    
+    saveUserWeight(userWeight){
+        const userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref('users/' + userId).update({measurements: {weight: userWeight}}
+        ).catch((error) => {
+            console.log("error: " + error);
+        });
     }
 }
 
