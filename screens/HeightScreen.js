@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Slider, Button } from 'react-native-elements';
+import firebase from '../plugins/firebase';
 
 export default class HeightScreen extends React.Component {
     constructor(props){
@@ -27,13 +28,25 @@ export default class HeightScreen extends React.Component {
                 onValueChange = {(value) => this.setState({height: value})} 
             />
             <Button
-              onPress = {() => navigate("Weight", {})}
+              onPress = {() => {
+                  this.saveUserHeight(this.state.height); 
+                  navigate("Weight", {})
+                }}
               title="GO TO WEIGHT"
               titleStyle={{fontWeight: 'bold', fontSize: 18}}
               containerStyle={{marginVertical: 10, height: 40, width: 200}}
             />
         </View>
         );
+    }
+
+    saveUserHeight(userHeight){
+        const userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref('users/' + userId).update({measurements: {height: userHeight}}
+        ).catch((error) => {
+            console.log("error: " + error);
+        });
     }
 }
 
