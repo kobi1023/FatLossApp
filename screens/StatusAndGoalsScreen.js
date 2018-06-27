@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import BMR from '../calculators/bmr';
+import IdealWeight from '../calculators/idealWeight';
 
 export default class StatusAndGoalsScreen extends React.Component {
     static navigationOptions = {
@@ -10,11 +10,10 @@ export default class StatusAndGoalsScreen extends React.Component {
     };
 
     componentDidMount() {
-        const bmr = BMR.calculateBMR(90, 191, 42, "male");
-        console.log("BMR: " + bmr);
-
-        const bmrActivity = BMR.addBmrActivity(bmr, "sdfsd");
-        console.log("BMR+Activity: " + bmrActivity)
+        console.log("Hamwi: " + IdealWeight.calculateHamwiFormula(191, 42, "male"));
+        console.log("Devine: " + IdealWeight.calculateDevineFormula(191, 42, "male"));
+        console.log("Robinson: " + IdealWeight.calculateRobinsonFormula(191, 42, "male"));
+        console.log("Miller: " + IdealWeight.calculateMillerFormula(191, 42, "male"));
     }
 
     render() {
