@@ -3,15 +3,16 @@ var BMR = {
         let bmr = null;
         
         if (gender == "male")
-          bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+          bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
         else
-          bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+          bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
         
         return bmr.toFixed(2);
     },
 
     addBmrActivity: function(bmr, activity){
-         //Multiply your BMR by the appropriate activity factor, as follows:
+         //TDEE = Multiply your BMR by the appropriate activity factor, as follows:
+
          //Sedentary (little or no exercise): BMR x 1.2
          //Lightly active (light exercise/sports 1-3 days/week): BMR x 1.375
          //Moderately active (moderate exercise/sports 3-5 days/week): BMR x 1.55
