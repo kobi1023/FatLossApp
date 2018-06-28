@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import IdealWeight from '../calculators/idealWeight';
+import ABSI from '../calculators/absi';
 
 export default class StatusAndGoalsScreen extends React.Component {
     static navigationOptions = {
@@ -10,10 +10,8 @@ export default class StatusAndGoalsScreen extends React.Component {
     };
 
     componentDidMount() {
-        console.log("Hamwi: " + IdealWeight.calculateHamwiFormula(191, 42, "male"));
-        console.log("Devine: " + IdealWeight.calculateDevineFormula(191, 42, "male"));
-        console.log("Robinson: " + IdealWeight.calculateRobinsonFormula(191, 42, "male"));
-        console.log("Miller: " + IdealWeight.calculateMillerFormula(191, 42, "male"));
+        const absiScore = ABSI.calculateABSIScore(24.7, 191, 94, 42, "male");
+        console.log("absi Score: " + absiScore);
     }
 
     render() {
