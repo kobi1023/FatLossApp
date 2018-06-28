@@ -14,7 +14,18 @@ var ABSI = {
     description: function(absiz){
         let description = "";
 
-        return "description";
+        if (absiz < -0.868)
+            description = "Very Low";
+        else if (absiz >= 0.868 && absiz <= -0.272)
+            description = "Low";
+        else if (absiz >= -0.272 && absiz <= 0.229)
+            description = "Average";
+	else if (absiz >= 0.229 && absiz <= 0.798)
+            description = "High";    
+        else if (absiz > 0.798)
+            description = "Very High";
+
+        return description;
     }
 }
 
