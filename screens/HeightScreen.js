@@ -10,10 +10,10 @@ export default class HeightScreen extends React.Component {
             height: 175,
         }
     }
-    static navigationOptions = {
-        title: "",
-        header: null
-    };
+    // static navigationOptions = {
+    //     title: "",
+    //     header: null
+    // };
     render() {
         var {navigate} = this.props.navigation;
         return (

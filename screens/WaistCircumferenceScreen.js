@@ -10,10 +10,10 @@ export default class WaistCircumferenceScreen extends React.Component {
             waist: 95,
         }
     }
-    static navigationOptions = {
-        title: "",
-        header: null
-    };
+    // static navigationOptions = {
+    //     title: "",
+    //     header: null
+    // };
     render() {
         var {navigate} = this.props.navigation;
         return (
@@ -43,7 +43,7 @@ export default class WaistCircumferenceScreen extends React.Component {
     saveUserWaist(userWaist){
         const userId = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('users/' + userId + "/measurements/").update({WaistWC: userWaist}
+        firebase.database().ref('users/' + userId + "/measurements/").update({waistWC: userWaist}
         ).catch((error) => {
             console.log("error: " + error);
         });

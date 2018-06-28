@@ -10,10 +10,10 @@ export default class WeightScreen extends React.Component {
             weight: 85,
         }
     }
-    static navigationOptions = {
-        title: "",
-        header: null
-    };
+    // static navigationOptions = {
+    //     title: "",
+    //     header: null
+    // };
     render() {
         var {navigate} = this.props.navigation;
         return (

@@ -10,10 +10,10 @@ export default class MeasurementsScreen extends React.Component {
             weight: 90
         }
     }
-    static navigationOptions = {
-        title: "",
-        header: null
-    };
+    // static navigationOptions = {
+    //     title: "",
+    //     header: null
+    // };
     render() {
         var {navigate} = this.props.navigation;
         return (

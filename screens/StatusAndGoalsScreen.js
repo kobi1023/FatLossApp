@@ -4,32 +4,40 @@ import { Avatar } from 'react-native-elements';
 import ABSI from '../calculators/absi';
 import BMI from '../calculators/bmi';
 import BMR from '../calculators/bmr';
+import firebase from '../plugins/firebase';
 
 export default class StatusAndGoalsScreen extends React.Component {
-    static navigationOptions = {
-        title: "",
-        header: null
-    };
+    // static navigationOptions = {
+    //     title: "",
+    //     header: null
+    // };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          bmiDescription: "",
+          absizDescription: "",
+        };
+      }
 
     componentDidMount() {
         var userId = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
             const weight = snapshot.val().measurements.weight;
-            const height = napshot.val().measurements.height;
-            const age = napshot.val().age;
-            const gender = napshot.val().gender
-            const waist = napshot.val().measurements.waistWC;
+            const height = snapshot.val().measurements.height;
+            const age = 42;//snapshot.val().age;
+            const gender = snapshot.val().gender;
+            const waist = snapshot.val().measurements.waistWC;
             
-            const bmi = BMI.calculateBMI(.weight, height);
+            const bmi = BMI.calculateBMI(weight, height);
             const bmiDescription = BMI.description(bmi);
             const absiz = ABSI.calculateABSIScore(bmi, height, waist, age, gender);
             const absizDescription = ABSI.description(absiz);
 
+            console.log("absiz: " + absiz);
+
             this.setState({bmiDescription: bmiDescription});
             this.setState({absizDescription: absizDescription});
-    //     this.setState({email: snapshot.val().email});
-    //     this.setState({gender: snapshot.val().gender});
-    //     this.setState({birthday: snapshot.val().birthday});
         });
     }
 
