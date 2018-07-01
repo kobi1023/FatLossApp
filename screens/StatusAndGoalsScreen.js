@@ -4,6 +4,7 @@ import { Avatar } from 'react-native-elements';
 import ABSI from '../calculators/absi';
 import BMI from '../calculators/bmi';
 import BMR from '../calculators/bmr';
+import IdealWeight from '../calculators/idealWeight';
 import firebase from '../plugins/firebase';
 
 export default class StatusAndGoalsScreen extends React.Component {
@@ -15,8 +16,15 @@ export default class StatusAndGoalsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+          bmi: "",  
           bmiDescription: "",
+          absiz: "",
           absizDescription: "",
+          bmr: "",
+          bmrAndActivity: "",
+          idealWeightDevine: "",
+          idealWeightHamwi: "",
+          idealWeightMiller: ""
         };
       }
 
@@ -31,13 +39,26 @@ export default class StatusAndGoalsScreen extends React.Component {
             
             const bmi = BMI.calculateBMI(weight, height);
             const bmiDescription = BMI.description(bmi);
+
             const absiz = ABSI.calculateABSIScore(bmi, height, waist, age, gender);
             const absizDescription = ABSI.description(absiz);
 
-            console.log("absiz: " + absiz);
+            const bmr = BMR.calculateBMR(weight, height, age, gender);
+            const bmrAndActivity = BMR.addBmrActivity(bmr, null);
 
+            const idealWeightDevine = IdealWeight.calculateDevineFormula(height, age, gender);
+            const idealWeightHamwi = IdealWeight.calculateHamwiFormula(height, age, gender);
+            const idealWeightMiller = IdealWeight.calculateMillerFormula(height, age, gender);
+
+            this.state({bmi: bmi});
             this.setState({bmiDescription: bmiDescription});
+            this.state({absiz: absiz});
             this.setState({absizDescription: absizDescription});
+            this.state({bmr: bmr});
+            this.state({bmrAndActivity: bmrAndActivity});
+            this.state({idealWeightDevine: idealWeightDevine});
+            this.state({idealWeightHamwi: idealWeightHamwi});
+            this.state({idealWeightMiller: idealWeightMiller});
         });
     }
 
@@ -45,8 +66,15 @@ export default class StatusAndGoalsScreen extends React.Component {
         return (
         <View style={styles.container}>
             <Text>Status & Goals:</Text>
+            <Text>bmi: {this.state.bmi}</Text>
             <Text>bmiDescription: {this.state.bmiDescription}</Text>
+            <Text>absiz: {this.state.absiz}</Text>
             <Text>absizDescription: {this.state.absizDescription}</Text>
+            <Text>bmr: {this.state.bmr}</Text>
+            <Text>bmrAndActivity: {this.state.bmrAndActivity}</Text>
+            <Text>idealWeightDevine: {this.state.idealWeightDevine}</Text>
+            <Text>idealWeightHamwi: {this.state.idealWeightHamwi}</Text>
+            <Text>idealWeightMiller: {this.state.idealWeightMiller}</Text>
             <Avatar
                   size="xlarge"
                   rounded
