@@ -50,15 +50,15 @@ export default class StatusAndGoalsScreen extends React.Component {
             const idealWeightHamwi = IdealWeight.calculateHamwiFormula(height, age, gender);
             const idealWeightMiller = IdealWeight.calculateMillerFormula(height, age, gender);
 
-            this.state({bmi: bmi});
+            this.setState({bmi: bmi});
             this.setState({bmiDescription: bmiDescription});
-            this.state({absiz: absiz});
+            this.setState({absiz: absiz});
             this.setState({absizDescription: absizDescription});
-            this.state({bmr: bmr});
-            this.state({bmrAndActivity: bmrAndActivity});
-            this.state({idealWeightDevine: idealWeightDevine});
-            this.state({idealWeightHamwi: idealWeightHamwi});
-            this.state({idealWeightMiller: idealWeightMiller});
+            this.setState({bmr: bmr});
+            this.setState({bmrAndActivity: bmrAndActivity});
+            this.setState({idealWeightDevine: idealWeightDevine});
+            this.setState({idealWeightHamwi: idealWeightHamwi});
+            this.setState({idealWeightMiller: idealWeightMiller});
         });
     }
 
