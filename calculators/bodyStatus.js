@@ -2,6 +2,12 @@ import ABSI from '.absi';
 import BMI from '.bmi';
 import IdealWeight from '.idealWeight';
 
+var items = [
+  [1, 2],
+  [3, 4],
+  [5, 6]
+];
+
 var BodyStatus = {
     calculateStatus: function(weight, height, waistCircum, age,  gender) {
         const bmi = BMI.calculateBMI(weight, height);
@@ -22,6 +28,7 @@ var BodyStatus = {
           status = 2;
         else if (isSkinny(bmi, absiz))
           status = 3;
+        else if (isNormalWeight(bmi, absiz))
 
         this.status = status;
         return status;
@@ -51,6 +58,13 @@ function isSkinnyFat(bmi, absiz) {
 function isSkinny(bmi, absiz) {
     
    // if (bmi = Underweight & absiz = very low) 
+    
+   return true;
+}
+
+function isNormalWeight(bmi, absiz) {
+    
+   // if (bmi <= normal weight & absiz = average) 
     
    return true;
 }
