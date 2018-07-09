@@ -35,14 +35,23 @@ var BodyStatus = {
 }
 
 function isOverWeight(bmi, absiz) {  
+   
+   // if (bmi >= overweight & absiz >= high)
+    
    return true;
 }
 
 function isSkinnyFat(bmi, absiz) {  
+   
+   // if (bmi = Underweight & absiz >= high) 
+    
    return true;
 }
 
-function isSkinny(bmi, absiz) {  
+function isSkinny(bmi, absiz) {
+    
+   // if (bmi = Underweight & absiz = very low) 
+    
    return true;
 }
 
