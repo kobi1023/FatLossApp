@@ -12,7 +12,7 @@ import {expect} from 'chai';
 // });
 
 //BMI
-it('calculate BMI correctly', () => {
+it('should be normalWeight for: height=191 & weight=90', () => {
   const bmi = new BMI(191, 90);
   expect(bmi.status).to.equal(BMIstatusEnum.normalWeight);
 });
