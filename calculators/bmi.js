@@ -33,8 +33,4 @@ export default class BMI {
     description(){
         return this.description
     }
-    
-    value(){
-        return this.bmi;
-    }
 }
