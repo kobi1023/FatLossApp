@@ -8,40 +8,40 @@ export default class ABSI {
     	// Calculate ABSI.
         this.absi = formatedWaist / (Math.pow(bmi, 2/3) * Math.pow(formatedHeight, 1/2)); 
 	
-	// Calculate ABSIz.
+        // Calculate ABSIz.
         const absiFactors = getAbsiMeanAndStandardDeviation(gender, age);
-        this.absiz = (absi - absiFactors.ABSIMean) / absiFactors.ABSISD;
+        this.absiz = (this.absi - absiFactors.ABSIMean) / absiFactors.ABSISD;
         this.absiz.toFixed(5);
-	    
-	// Set Status & Description.
-    	if (absiz < -0.868){
-	    this.status = ABSIstatusEnum.veryLow;	
+            
+        // Set Status & Description.
+        if (this.absiz < -0.868){
+            this.status = ABSIstatusEnum.veryLow;	
             this.description = "Very Low";
-	}
-        else if (absiz >= -0.868 && absiz <= -0.272){
-	    this.status = ABSIstatusEnum.low;	
-            description = "Low";
-	}
-        else if (absiz >= -0.272 && absiz <= 0.229){
-	    this.status = ABSIstatusEnum.average;	
-            description = "Average";
-	}
-	else if (absiz >= 0.229 && absiz <= 0.798){
-	    this.status = ABSIstatusEnum.high;	
-            description = "High";
-	}
-        else if (absiz > 0.798){
-	    this.status = ABSIstatusEnum.veryHigh;	
-            description = "Very High";
-	}
+        }
+        else if (this.absiz >= -0.868 && this.absiz <= -0.272){
+            this.status = ABSIstatusEnum.low;	
+            this.description = "Low";
+        }
+        else if (this.absiz >= -0.272 && this.absiz <= 0.229){
+            this.status = ABSIstatusEnum.average;	
+            this.description = "Average";
+        }
+        else if (this.absiz >= 0.229 && this.absiz <= 0.798){
+            this.status = ABSIstatusEnum.high;	
+            this.description = "High";
+        }
+        else if (this.absiz > 0.798){
+            this.status = ABSIstatusEnum.veryHigh;	
+            this.description = "Very High";
+        }   
     }
     
     status(){
         return this.status;
     }
 
-    description(){
-        return this.description
+    get description(){
+        return this.description;
     }
 }
 
