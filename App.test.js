@@ -34,4 +34,13 @@ describe('ABSI Tests:', function () {
     const absi = new ABSI(bmi.value, 191, 93, 42,  "male");
     expect(absi.status).to.equal(ABSIstatusEnum.low);
   });
+}); 
+
+//Body Status.
+describe('Body Status Tests:', function () {
+  //it('should be low for : height=191, weight=90, age=42, gender=male, waist=93', () => {
+    //const bmi = new BMI(191, 90);
+    //const absi = new ABSI(bmi.value, 191, 93, 42,  "male");
+    //expect(absi.status).to.equal(ABSIstatusEnum.low);
+  //});
 });      
