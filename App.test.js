@@ -4,6 +4,9 @@ import BMI from './calculators/bmi';
 import {BMIstatusEnum} from './calculators/bmi';
 import ABSI from './calculators/absi';
 import {ABSIstatusEnum} from './calculators/absi';
+import BodyShape from './calculators/bodyShape';
+import {BodyShapestatusEnum} from './calculators/bodyShape';
+
 import {expect} from 'chai';
 
 // import renderer from 'react-test-renderer';
@@ -15,7 +18,7 @@ import {expect} from 'chai';
 
 //BMI.
 describe('BMI Tests:', function () {
-  it('should be normalWeight for: height=191 & weight=90', () => {
+  it('should be -normalWeight- for: height=191 & weight=90', () => {
     const bmi = new BMI(191, 90);
     expect(bmi.status).to.equal(BMIstatusEnum.normalWeight);
   });
@@ -29,7 +32,7 @@ describe('BMI Tests:', function () {
          
 //ABSI.
 describe('ABSI Tests:', function () {
-  it('should be low for : height=191, weight=90, age=42, gender=male, waist=93', () => {
+  it('should be -low- for: height=191, weight=90, age=42, gender=male, waist=93', () => {
     const bmi = new BMI(191, 90);
     const absi = new ABSI(bmi.value, 191, 93, 42,  "male");
     expect(absi.status).to.equal(ABSIstatusEnum.low);
@@ -37,10 +40,10 @@ describe('ABSI Tests:', function () {
 }); 
 
 //Body Status.
-describe('Body Status Tests:', function () {
-  //it('should be low for : height=191, weight=90, age=42, gender=male, waist=93', () => {
-    //const bmi = new BMI(191, 90);
-    //const absi = new ABSI(bmi.value, 191, 93, 42,  "male");
-    //expect(absi.status).to.equal(ABSIstatusEnum.low);
-  //});
+describe('Body Shape Tests:', function () {
+  it('should be -fit- for: gender=male, age=42, height=191, weight=90, waist=93', () => {
+    const userProfile = {"gender": "male", "age": 42, "height": 191, "weight": 90, "waist": 93}
+    const bodyShape = new BodyShape(userProfile);
+    expect(bodyShape.status).to.equal(BodyShapestatusEnum.fit);
+  });
 });      
