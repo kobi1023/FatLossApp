@@ -5,7 +5,7 @@ import {BMIstatusEnum} from './calculators/bmi';
 import ABSI from './calculators/absi';
 import {ABSIstatusEnum} from './calculators/absi';
 import BodyShape from './calculators/bodyShape';
-import {BodyShapestatusEnum} from './calculators/bodyShape';
+import {BodyShapeStatusEnum} from './calculators/bodyShape';
 
 import {expect} from 'chai';
 
@@ -44,6 +44,6 @@ describe('Body Shape Tests:', function () {
   it('should be -fit- for: gender=male, age=42, height=191, weight=90, waist=93', () => {
     const userProfile = {"gender": "male", "age": 42, "height": 191, "weight": 90, "waist": 93}
     const bodyShape = new BodyShape(userProfile);
-    expect(bodyShape.status).to.equal(BodyShapestatusEnum.fit);
+    expect(bodyShape.status).to.equal(BodyShapeStatusEnum.fit);
   });
 });      
