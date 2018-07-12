@@ -17,6 +17,11 @@ export default class BodyShape {
             this.status = BodyShapeStatusEnum.fit;
             this.description = "Fit";
         }
+        //Athletic.
+        else if (bmi.status == BMIstatusEnum.normalWeight && absiz.status == ABSIstatusEnum.veryLow) {
+            this.status = BodyShapeStatusEnum.athletic;
+            this.description = "Athletic";
+        }
     }
     
     status(){
