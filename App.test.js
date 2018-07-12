@@ -46,4 +46,10 @@ describe('Body Shape Tests:', function () {
     const bodyShape = new BodyShape(userProfile);
     expect(bodyShape.status).to.equal(BodyShapeStatusEnum.fit);
   });
+  
+  it('should be -athletic- for: gender=male, age=42, height=191, weight=90, waist=93', () => {
+    const userProfile = {"gender": "female", "age": 40, "height": 174, "weight": 67, "waist": 74}
+    const bodyShape = new BodyShape(userProfile);
+    expect(bodyShape.status).to.equal(BodyShapeStatusEnum.athletic);
+  });
 });      
