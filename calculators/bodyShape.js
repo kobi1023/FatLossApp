@@ -13,7 +13,7 @@ export default class BodyShape {
         this.status = BodyShapeStatusEnum.undefine;
 
         //Fit.
-        if (bmi.status == BMIstatusEnum.normalWeight && (absiz.status == ABSIstatusEnum.low) || absiz.status == ABSIstatusEnum.veryLow) {
+        if (bmi.status == BMIstatusEnum.normalWeight && absiz.status == ABSIstatusEnum.low) {
             this.status = BodyShapeStatusEnum.fit;
             this.description = "Fit";
         }
