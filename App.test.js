@@ -58,4 +58,10 @@ describe('Body Shape Tests:', function () {
     const bodyShape = new BodyShape(userProfile);
     expect(bodyShape.status).to.equal(BodyShapeStatusEnum.chubby);
   });
+  
+  it('should be -chubby- for: gender=male, age=45, height=180, weight=69, waist=88', () => {
+    const userProfile = {"gender": "male", "age": 45, "height": 180, "weight": 69, "waist": 88}
+    const bodyShape = new BodyShape(userProfile);
+    expect(bodyShape.status).to.equal(BodyShapeStatusEnum.chubby);
+  });
 });      
