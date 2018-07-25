@@ -63,7 +63,7 @@ export default class BodyShape {
         return this.status;
     }
 
-    get description(){
+    description(){
         return this.description;
     }
 }

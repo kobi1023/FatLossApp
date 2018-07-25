@@ -1,11 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import ABSI from '../calculators/absi';
-import BMI from '../calculators/bmi';
-import BMR from '../calculators/bmr';
-import IdealWeight from '../calculators/idealWeight';
 import firebase from '../plugins/firebase';
+import BodyShape from '../calculators/bodyShape';
 
 export default class StatusAndGoalsScreen extends React.Component {
     // static navigationOptions = {
