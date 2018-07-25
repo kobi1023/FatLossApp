@@ -32,6 +32,31 @@ export default class BodyShape {
             this.status = BodyShapeStatusEnum.skinny;
             this.description = "Skinny";
         }
+        //Skinny Fat.
+        else if (bmi.status == BMIstatusEnum.underweight && absiz.status == ABSIstatusEnum.average) {
+            this.status = BodyShapeStatusEnum.skinnyFat;
+            this.description = "Skinny Fat";
+        }
+        //Average.
+        else if (bmi.status == BMIstatusEnum.normalWeight && absiz.status == ABSIstatusEnum.average) {
+            this.status = BodyShapeStatusEnum.average;
+            this.description = "Average";
+        }
+        //Built.
+        else if (bmi.status == BMIstatusEnum.overweight && absiz.status == ABSIstatusEnum.low) {
+            this.status = BodyShapeStatusEnum.built;
+            this.description = "Built";
+        }
+        //fat.
+        else if (bmi.status == BMIstatusEnum.overweight && absiz.status == ABSIstatusEnum.high) {
+            this.status = BodyShapeStatusEnum.fat;
+            this.description = "Fat";
+        }
+        //muscular.
+        else if (bmi.status == BMIstatusEnum.overweight && absiz.status == ABSIstatusEnum.veryLow) {
+            this.status = BodyShapeStatusEnum.muscular;
+            this.description = "Muscular";
+        }
     }
     
     status(){
