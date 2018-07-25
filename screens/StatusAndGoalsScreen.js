@@ -16,49 +16,50 @@ export default class StatusAndGoalsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          bmi: "",  
-          bmiDescription: "",
-          absiz: "",
-          absizDescription: "",
-          bmr: "",
-          bmrAndActivity: "",
-          idealWeightDevine: "",
-          idealWeightHamwi: "",
-          idealWeightMiller: ""
+          status: "",
         };
       }
 
     componentDidMount() {
         var userId = firebase.auth().currentUser.uid;
         firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-            const weight = snapshot.val().measurements.weight;
-            const height = snapshot.val().measurements.height;
-            const age = 42;//snapshot.val().age;
-            const gender = snapshot.val().gender;
-            const waist = snapshot.val().measurements.waistWC;
             
-            const bmi = BMI.calculateBMI(weight, height);
-            const bmiDescription = BMI.description(bmi);
+            const userProfile = {"gender": snapshot.val().gender, 
+                                 "age": 42, 
+                                 "height": snapshot.val().measurements.height, 
+                                 "weight": snapshot.val().measurements.weight, 
+                                 "waist": snapshot.val().measurements.waistWC}
+            const bodyShape = new BodyShape(userProfile);
+            this.setState({status: bodyShape.description});
 
-            const absiz = ABSI.calculateABSIScore(bmi, height, waist, age, gender);
-            const absizDescription = ABSI.description(absiz);
+            //const weight = snapshot.val().measurements.weight;
+            //const height = snapshot.val().measurements.height;
+            //const age = 42;//snapshot.val().age;
+            //const gender = snapshot.val().gender;
+            //const waist = snapshot.val().measurements.waistWC;
+            
+            //const bmi = BMI.calculateBMI(weight, height);
+            //const bmiDescription = BMI.description(bmi);
 
-            const bmr = BMR.calculateBMR(weight, height, age, gender);
-            const bmrAndActivity = BMR.addBmrActivity(bmr, null);
+            //const absiz = ABSI.calculateABSIScore(bmi, height, waist, age, gender);
+            //const absizDescription = ABSI.description(absiz);
 
-            const idealWeightDevine = IdealWeight.calculateDevineFormula(height, age, gender);
-            const idealWeightHamwi = IdealWeight.calculateHamwiFormula(height, age, gender);
-            const idealWeightMiller = IdealWeight.calculateMillerFormula(height, age, gender);
+            //const bmr = BMR.calculateBMR(weight, height, age, gender);
+            //const bmrAndActivity = BMR.addBmrActivity(bmr, null);
 
-            this.setState({bmi: bmi});
-            this.setState({bmiDescription: bmiDescription});
-            this.setState({absiz: absiz});
-            this.setState({absizDescription: absizDescription});
-            this.setState({bmr: bmr});
-            this.setState({bmrAndActivity: bmrAndActivity});
-            this.setState({idealWeightDevine: idealWeightDevine});
-            this.setState({idealWeightHamwi: idealWeightHamwi});
-            this.setState({idealWeightMiller: idealWeightMiller});
+            //const idealWeightDevine = IdealWeight.calculateDevineFormula(height, age, gender);
+            //const idealWeightHamwi = IdealWeight.calculateHamwiFormula(height, age, gender);
+            //const idealWeightMiller = IdealWeight.calculateMillerFormula(height, age, gender);
+
+            //this.setState({bmi: bmi});
+            //this.setState({bmiDescription: bmiDescription});
+            //this.setState({absiz: absiz});
+            //this.setState({absizDescription: absizDescription});
+            //this.setState({bmr: bmr});
+            //this.setState({bmrAndActivity: bmrAndActivity});
+            //this.setState({idealWeightDevine: idealWeightDevine});
+            //this.setState({idealWeightHamwi: idealWeightHamwi});
+            //this.setState({idealWeightMiller: idealWeightMiller});
         });
     }
 
