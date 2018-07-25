@@ -67,15 +67,7 @@ export default class StatusAndGoalsScreen extends React.Component {
         return (
         <View style={styles.container}>
             <Text>Status & Goals:</Text>
-            <Text>bmi: {this.state.bmi}</Text>
-            <Text>bmiDescription: {this.state.bmiDescription}</Text>
-            <Text>absiz: {this.state.absiz}</Text>
-            <Text>absizDescription: {this.state.absizDescription}</Text>
-            <Text>bmr: {this.state.bmr}</Text>
-            <Text>bmrAndActivity: {this.state.bmrAndActivity}</Text>
-            <Text>idealWeightDevine: {this.state.idealWeightDevine}</Text>
-            <Text>idealWeightHamwi: {this.state.idealWeightHamwi}</Text>
-            <Text>idealWeightMiller: {this.state.idealWeightMiller}</Text>
+            <Text>status: {this.state.status}</Text>
             <Avatar
                   size="xlarge"
                   rounded
