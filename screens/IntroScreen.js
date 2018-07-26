@@ -22,6 +22,10 @@ export default class App extends React.Component {
         {/* <Text>By tapping Log In, you agree to our</Text> */}
         {/* <Text>Terms and Privacy Policy.</Text> */}
         <Onboarding
+          showSkip={false}
+          showDone={false}
+          bottomBarHighlight={false}
+          bottomBarHeight={50}
           pages={[
             {
               backgroundColor: '#fff',
