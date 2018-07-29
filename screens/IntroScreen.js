@@ -30,19 +30,13 @@ export default class App extends React.Component {
             {
               backgroundColor: '#fff',
               image: <Image source={require('./images/circle.png')} />,
-              title: 'Body Structure Identification.',
+              title: 'AI-powered body identification and target weight goals',
               subtitle: '',
             },
             {
               backgroundColor: '#fe6e58',
               image: <Image source={require('./images/square.png')} />,
-              title: 'AI-Powered Weight Goals.',
-              subtitle: '',
-            },
-            {
-              backgroundColor: '#fe6e58',
-              image: <Image source={require('./images/square.png')} />,
-              title: 'Revolutionary Diet Tracker.',
+              title: 'Revolutionary simple and effective Diet Tracker',
               subtitle: '',
             },
             {
