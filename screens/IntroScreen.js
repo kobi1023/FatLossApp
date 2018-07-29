@@ -30,19 +30,25 @@ export default class App extends React.Component {
             {
               backgroundColor: '#fff',
               image: <Image source={require('./images/circle.png')} />,
-              title: 'Onboarding',
-              subtitle: 'Done with React Native Onboarding Swiper',
+              title: 'Body Structure Identification.',
+              subtitle: 'Each person has a different physique and therefore needs a unique diet plan, our innovative technology identify your body structure and behaviour and guide you to weight loss success.',
             },
             {
               backgroundColor: '#fe6e58',
               image: <Image source={require('./images/square.png')} />,
-              title: 'The Title',
-              subtitle: 'This is the subtitle that sumplements the title.',
+              title: 'AI-Powered Weight Goals.',
+              subtitle: 'Weight goals are automatically defined by your body structure and it's unique weight changes behaviors.',
+            },
+            {
+              backgroundColor: '#fe6e58',
+              image: <Image source={require('./images/square.png')} />,
+              title: 'Revolutionary Diet Tracker.',
+              subtitle: 'Stop counting calories, Tracking your diet has never been so simple and effective.',
             },
             {
               backgroundColor: '#fff',
               image: <Image source={require('./images/triangle.png')} />,
-              title: 'GET STARTED',
+              title: 'Start Losing Weight Today!',
               subtitle: (
                 <Button
                   onPress = {
