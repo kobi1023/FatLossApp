@@ -31,19 +31,19 @@ export default class App extends React.Component {
               backgroundColor: '#fff',
               image: <Image source={require('./images/circle.png')} />,
               title: 'Body Structure Identification.',
-              subtitle: 'Each person has a different physique and therefore needs a unique diet plan, our innovative technology identify your body structure and behaviour and guide you to weight loss success.',
+              subtitle: '',
             },
             {
               backgroundColor: '#fe6e58',
               image: <Image source={require('./images/square.png')} />,
               title: 'AI-Powered Weight Goals.',
-              subtitle: 'Weight goals are automatically defined by your body structure and it's unique weight changes behaviors.',
+              subtitle: '',
             },
             {
               backgroundColor: '#fe6e58',
               image: <Image source={require('./images/square.png')} />,
               title: 'Revolutionary Diet Tracker.',
-              subtitle: 'Stop counting calories, Tracking your diet has never been so simple and effective.',
+              subtitle: '',
             },
             {
               backgroundColor: '#fff',
