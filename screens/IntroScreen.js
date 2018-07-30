@@ -29,19 +29,19 @@ export default class App extends React.Component {
           pages={[
             {
               backgroundColor: '#fff',
-              image: <Image source={require('./images/circle.png')} />,
-              title: 'Dynamic diet plan that is tailored to your unique physique',
+              image: <Image source={require('./images/body.png')} />,
+              title: 'Dynamic diet plan tailored to your unique physique',
               subtitle: '',
             },
             {
               backgroundColor: '#fff',
-              image: <Image source={require('./images/circle.png')} />,
+              image: <Image source={require('./images/goals.png')} />,
               title: 'AI-powered smart weight loss goals strategy',
               subtitle: '',
             },
             {
               backgroundColor: '#fff',
-              image: <Image source={require('./images/square.png')} />,
+              image: <Image source={require('./images/tracker.png')} />,
               title: 'Revolutionary simple yet powerful diet tracker',
               subtitle: '',
             },
