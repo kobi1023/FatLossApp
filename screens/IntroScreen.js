@@ -40,14 +40,14 @@ export default class App extends React.Component {
               subtitle: '',
             },
             {
-              backgroundColor: '#fe6e58',
+              backgroundColor: '#fff',
               image: <Image source={require('./images/square.png')} />,
               title: 'Revolutionary simple yet powerful diet tracker',
               subtitle: '',
             },
             {
               backgroundColor: '#fff',
-              image: <Image source={require('./images/triangle.png')} />,
+              image: <Image source={require('./images/weight_loss.png')} />,
               title: 'Start Losing Weight Today!',
               subtitle: (
                 <Button
@@ -56,7 +56,7 @@ export default class App extends React.Component {
                   }
                   title="LOG IN WITH FACEBOOK"
                   titleStyle={{fontWeight: 'bold', fontSize: 18}}
-                  buttonStyle={{backgroundColor: "rgba(59,89,152,1)", borderWidth: 0, borderColor: 'transparent', borderRadius: 20}}
+                  buttonStyle={{backgroundColor: "rgba(33,115,178,1)", borderWidth: 0, borderColor: 'transparent', borderRadius: 1}}
                   containerStyle={{marginVertical: 10, height: 40, width: 200}}
                 />
               ),
