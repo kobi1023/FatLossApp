@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Tile } from 'react-native';
-import { Avatar, Button } from 'react-native-elements';
+import { StyleSheet, Text, View } from 'react-native';
+import { Avatar, Button, Tile } from 'react-native-elements';
 import firebase from '../plugins/firebase';
 
 export default class WelcomeScreen extends React.Component {
@@ -45,10 +45,16 @@ export default class WelcomeScreen extends React.Component {
         return (
             <Tile
               imageSrc = {{uri: this.props.navigation.state.params.picture}}
-              title = this.props.navigation.state.params.firstName
-              featured  
-              caption = this.props.navigation.state.params.email
+              title = {this.props.navigation.state.params.firstName}
+              //featured  
+              height = {700}
+              caption = {this.props.navigation.state.params.email}
+              contentContainerStyle = {{flex:1}}
             >    
+              <View style={styles.container}>
+                <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
+              </View>
+            </Tile>
             //<View style={styles.container}>
             //    <Avatar
             //      size="xlarge"
@@ -75,8 +81,7 @@ export default class WelcomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
   });
