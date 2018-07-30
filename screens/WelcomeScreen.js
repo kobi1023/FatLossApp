@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Tile } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 import firebase from '../plugins/firebase';
 
@@ -43,26 +43,32 @@ export default class WelcomeScreen extends React.Component {
         // }
 
         return (
-        <View style={styles.container}>
-            <Avatar
-              size="xlarge"
-              rounded
-              source={{uri: this.props.navigation.state.params.picture}}
-              activeOpacity={0.7}
-            />
-            <Text>Name: {this.props.navigation.state.params.firstName}</Text>
-            <Text>Email: {this.props.navigation.state.params.email}</Text>
-            <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
-            <Text>Gender: {this.props.navigation.state.params.gender}</Text>
-            <Button
-              onPress = {() => navigate("Height", {})}
-              title="GO TO HEIGHT"
-              titleStyle={{fontWeight: 'bold', fontSize: 18}}
-              //buttonStyle={{backgroundColor: "rgba(59,89,152,1)", borderWidth: 0, borderColor: 'transparent', borderRadius: 20}}
-              containerStyle={{marginVertical: 10, height: 40, width: 200}}
-        />
-        </View>
-        );
+            <Tile
+              imageSrc = {{uri: this.props.navigation.state.params.picture}}
+              title = this.props.navigation.state.params.firstName
+              featured  
+              caption = this.props.navigation.state.params.email
+            >    
+            //<View style={styles.container}>
+            //    <Avatar
+            //      size="xlarge"
+            //      rounded
+            //      source={{uri: this.props.navigation.state.params.picture}}
+            //      activeOpacity={0.7}
+            //    />
+            //    <Text>Name: {this.props.navigation.state.params.firstName}</Text>
+            //    <Text>Email: {this.props.navigation.state.params.email}</Text>
+            //    <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
+            //    <Text>Gender: {this.props.navigation.state.params.gender}</Text>
+            //    <Button
+            //      onPress = {() => navigate("Height", {})}
+            //      title="GO TO HEIGHT"
+            //      titleStyle={{fontWeight: 'bold', fontSize: 18}}
+            //      //buttonStyle={{backgroundColor: "rgba(59,89,152,1)", borderWidth: 0, borderColor: 'transparent', borderRadius: 20}}
+            //      containerStyle={{marginVertical: 10, height: 40, width: 200}}
+            ///>
+            //</View>
+            );
     }
 }
 
