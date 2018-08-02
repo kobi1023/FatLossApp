@@ -1,7 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native';
 import { Avatar, Button, Tile } from 'react-native-elements';
 import firebase from '../plugins/firebase';
+const { width, height } = Dimensions.get('window');
+import { Dimensions } from 'react-native';
+const ImageHeight = height * 0.55;
 
 export default class WelcomeScreen extends React.Component {
     static navigationOptions = {
@@ -43,18 +46,35 @@ export default class WelcomeScreen extends React.Component {
         // }
 
         return (
-            <Tile
-              imageSrc = {{uri: this.props.navigation.state.params.picture}}
-              title = {this.props.navigation.state.params.firstName}
+            <ScrollView>
+              <ImageBackground style={styles.thumbnail} source={this.props.navigation.state.params.picture} >
+                <View >
+                    <Text style={styles.text}>
+                      {this.props.navigation.state.params.firstName}, {this.props.navigation.state.params.birthday}
+                    </Text>
+                    <Text style={styles.textdistance}>
+                      11 miles
+                    </Text>
+                </View>
+                </ImageBackground>
+                //<MatchedUserBio/>
+                //<Text style={styles.textView}>To finish setting up your profile, we need aditional body measurements, Ready?</Text>
+                //<Button title='START' />
+            </ScrollView>
+            
+            //<Tile
+            //  imageSrc = {{uri: this.props.navigation.state.params.picture}}
+            //  title = {this.props.navigation.state.params.firstName}
               //featured  
-              height = {700}
-              caption = {this.props.navigation.state.params.email}
-              contentContainerStyle = {{flex:1}}
-            >    
-              <View style={styles.container}>
-                <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
-              </View>
-            </Tile>
+            //  height = {700}
+            //  caption = {this.props.navigation.state.params.email}
+            //  contentContainerStyle = {{flex:1}}
+            //>    
+            //  <View style={styles.container}>
+            //    <Text>Birthday: {this.props.navigation.state.params.birthday}</Text>
+            //  </View>
+            //</Tile>
+            
             //<View style={styles.container}>
             //    <Avatar
             //      size="xlarge"
@@ -84,4 +104,28 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
+    thumbnail: {
+      // alignItems: 'center',
+      width: width,
+      height: ImageHeight,
+      backgroundColor: 'rgba(0,0,0,0)',
+      flex:1,
+    },
+    text:{
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: 'white',
+      shadowOffset: { width: 2, height: 2 },
+      shadowColor: '#000',
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      top:ImageHeight - 60,
+      left: 15
+    },
+    textdistance:{
+      fontSize: 15,
+      color: 'white',
+      top:ImageHeight - 50,
+      left: 15
+    },    
   });
