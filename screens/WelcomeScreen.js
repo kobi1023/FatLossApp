@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Avatar, Button, Tile } from 'react-native-elements';
 import firebase from '../plugins/firebase';
 const { width, height } = Dimensions.get('window');
@@ -47,7 +47,7 @@ export default class WelcomeScreen extends React.Component {
 
         return (
             <ScrollView>
-              <ImageBackground style={styles.thumbnail} source={this.props.navigation.state.params.picture} >
+              <ImageBackground style={styles.thumbnail} source={{uri: this.props.navigation.state.params.picture}} >
                 <View >
                     <Text style={styles.text}>
                       {this.props.navigation.state.params.firstName}, {this.props.navigation.state.params.birthday}
@@ -57,9 +57,22 @@ export default class WelcomeScreen extends React.Component {
                     </Text>
                 </View>
                 </ImageBackground>
-                //<MatchedUserBio/>
-                //<Text style={styles.textView}>To finish setting up your profile, we need aditional body measurements, Ready?</Text>
-                //<Button title='START' />
+                <View style={styles.Biocontainer}>
+                  <TouchableOpacity style={{alignItems:'center'}} >
+                    <Image style={{width:75, height:75,}} source={{uri:'https://firebasestorage.googleapis.com/v0/b/foobeeapp-52f36.appspot.com/o/cravings%2Fdrinks%2Fbeer.png?alt=media&token=d4f42eb7-713c-45f4-ae98-4329bdcc8b5d'}} />
+                    <Text>42</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{alignItems:'center'}} >
+                    <Image style={{width:75, height:75,}} source={{uri:'https://firebasestorage.googleapis.com/v0/b/foobeeapp-52f36.appspot.com/o/cravings%2Ffoods%2Favocado.png?alt=media&token=96b7cf87-af67-4900-84a9-bc1aa9cf69b6'}} />
+                    <Text>Male</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{alignItems:'center'}} >
+                    <Image style={{width:75, height:75,}} source={{uri:'https://firebasestorage.googleapis.com/v0/b/foobeeapp-52f36.appspot.com/o/cravings%2Factivities%2FairBallooning.png?alt=media&token=11b4f35a-6288-4944-bbb8-67b0e60eed3c'}} />
+                    <Text>Measurements</Text>
+                  </TouchableOpacity>
+                </View>
+                <Text style={styles.textView}>To finish setting up your profile, we need aditional body measurements, Ready?</Text>
+                <Button title='START' />
             </ScrollView>
             
             //<Tile
@@ -103,12 +116,20 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-between',
+      backgroundColor: 'white',
+    },
+    Biocontainer: {
+      flex: 0.3,
+      backgroundColor: 'white',
+      flexDirection:'row',
+      justifyContent: 'space-around',
+      margin:10,
     },
     thumbnail: {
       // alignItems: 'center',
       width: width,
       height: ImageHeight,
-      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundColor: 'white',
       flex:1,
     },
     text:{
@@ -127,5 +148,9 @@ const styles = StyleSheet.create({
       color: 'white',
       top:ImageHeight - 50,
       left: 15
+    },
+    textView: {
+      margin:15
+     
     },    
   });
